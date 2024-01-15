@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIPPLE | Maps Scraper</title>
+    <script type="module" src="public/side-nav.js"></script>
+    <script type="module" src="public/load-button.js"></script>
+    <script src="https://unpkg.com/htmx.org"></script>
+    <script type="module"> import zustand from https://cdn.jsdelivr.net/npm/zustand@4.4.7/+esm </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+<style>
+[data-theme="light"],
+:root:not([data-theme="dark"]) {
+  --primary: #000fff;
+  --primary-hover: #0097a7;
+  --primary-focus: rgba(0, 172, 193, 0.125);
+  --primary-inverse: #FFF;
+}
+
+/* Cyan Dark scheme (Auto) */
+/* Automatically enabled if user has Dark mode enabled */
+@media only screen and (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --primary: #00acc1;
+    --primary-hover: #00bcd4;
+    --primary-focus: rgba(0, 172, 193, 0.25);
+    --primary-inverse: #FFF;
+  }
+}
+
+/* Cyan Dark scheme (Forced) */
+/* Enabled if forced with data-theme="dark" */
+[data-theme="dark"] {
+  --primary: #00acc1;
+  --primary-hover: #00bcd4;
+  --primary-focus: rgba(0, 172, 193, 0.25);
+  --primary-inverse: #FFF;
+}
+
+/* Cyan (Common styles) */
+
+  body, html {
+    height: 100%;
+    margin: 0;
+  }
+  .dashboard {
+    display: grid;
+    height: 100%;
+    grid-template-areas:
+      "sidebar header"
+      "sidebar content";
+    grid-template-rows: 50px 1fr;
+    grid-template-columns: 200px 1fr;
+  }
+  .header {
+    grid-area: header;
+    background: #333;
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .sidebar {
+    grid-area: sidebar;
+    padding: 10px;
+    border-right: 2px solid #000;    
+  }
+  .content {
+    grid-area: content;
+    padding: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="dashboard">
+  <div class="header">Header Bar</div>
+  <div class="sidebar"><side-nav></side-nav></div>
+    <main class="container content">
+<h2>Find google maps info!</h2>
+<form hx-post="/contact">
+  <div hx-target="this" hx-swap="outerHTML">
+    <label>enter the url</label>
+    <input name="url" >
+    <label>enter the query</label>
+    <input name="query" >
+    <label>enter radius</label>
+    <input name="radius" >
+    <a href="https://google.com"> the google </a>
+  <button class="secondary"  >Submit</button>
+ <details>
+  <summary>Accordion 1</summary>
+  <p>…</p>
+</details>
+
+<details open>
+  <summary>Accordion 2</summary>
+  <ul>
+    <li>…</li>
+    <li>…</li>
+  </ul>
+</details> 
+
+
+<button hx-get="load-button" hx-swap="outerHTML">Get a web component!</button>
+  </div>
+
+</form>
+    </main>
+</div>
+</body>
+</html>
